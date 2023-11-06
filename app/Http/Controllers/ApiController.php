@@ -18,11 +18,12 @@ class ApiController extends Controller
 
         dd($pokedex['pokemon']);
 
-        return view('pokedex.pokemon', ['pokedex' => $pokedex['pokemon'], 'title' => $title]);
+        return view('pokedex.pokemon_php', ['pokedex' => $pokedex['pokemon'], 'title' => $title]);
         return $pokedex['pokemon'];  */
 
         /* Utilizzo json interno al sito */
         $jsonPath = public_path('json/pokedex.json');
+        $title = 'Pokemon_PHP';
 
         try {
             $jsonData = file_get_contents($jsonPath);
@@ -30,8 +31,7 @@ class ApiController extends Controller
 
             if (isset($data['pokemon']) && is_array($data['pokemon'])) {
                 $pokedex = $data['pokemon'];
-                return view('pokedex.pokemon', compact('pokedex'));
-                /* return $pokedex; */
+                return view('pokedex.pokemon_php', compact('pokedex', 'title'));
             } else {
                 return response()->json(['error' => 'Formato JSON non valido: la chiave "pokemon" non è presente o non è un array'], 500);
             }
@@ -43,6 +43,7 @@ class ApiController extends Controller
 
     public function pokedexApiJs()
     {
-//far vedere solo la vista
+        $title = 'Pokemon_JS';
+        return view('pokedex.pokemon_js', compact('title'));
     }
 }

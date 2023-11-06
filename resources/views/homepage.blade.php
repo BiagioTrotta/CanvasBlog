@@ -1,12 +1,8 @@
 <x-main>
     <x-slot:title>{{ $title }}</x-slot:title>
-    <div class="container">
-        <div class="row">
-            <img class="w-25 mx-auto mt-4" src="{{ Storage::url("public/images/media/title_canvas_blog.png") }}" alt="{{ config('app.name') }}">
-        </div>
-    </div>
+
     <div class="container-fluid my-3">
-        <div class="row">
+        <div class="row position-relative">
             <div id="carouselExampleCaptions" class="carousel slide">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -15,21 +11,21 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="https://picsum.photos/id/3/1200/400" class="d-block w-100" alt="...">
+                        <img src="https://picsum.photos/id/14/1200/400" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>First slide label</h5>
                             <p>Some representative placeholder content for the first slide.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://picsum.photos/id/4/1200/400" class="d-block w-100" alt="...">
+                        <img src="https://picsum.photos/id/11/1200/400" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Second slide label</h5>
                             <p>Some representative placeholder content for the second slide.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://picsum.photos/id/5/1200/400" class="d-block w-100" alt="...">
+                        <img src="https://picsum.photos/id/12/1200/400" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Third slide label</h5>
                             <p>Some representative placeholder content for the third slide.</p>
@@ -45,6 +41,7 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+                <img class="w-25 mx-auto position-absolute z-3 top-50 start-50 translate-middle" src="{{ Storage::url("public/images/media/title_canvas_blog_3.png") }}" alt="{{ config('app.name') }}">
         </div>
 
     </div>

@@ -1,4 +1,5 @@
 <x-main>
+<x-slot:title>{{ $title }}</x-slot:title>
     <div class="container">
         <div class="row">
             @foreach($pokedex as $key => $pokemon)
@@ -20,25 +21,4 @@
             @endforeach
         </div>
     </div>
-
-   <!--  <div id="pokemonList">
-    </div> -->
-
-    <!-- <script>
-        fetch('/json/pokedex.json')
-            .then(response => response.json())
-            .then(data => {
-                // Genera HTML basato sui dati del pokedex
-                var pokemonListHtml = '';
-                data.pokemon.forEach(pokemon => {
-                    pokemonListHtml += `<div>${pokemon.name} - ${pokemon.type.join(', ')}</div>`;
-                });
-
-                // Aggiungi l'HTML generato alla tua pagina
-                document.getElementById('pokemonList').innerHTML = pokemonListHtml;
-            })
-            .catch(error => {
-                console.error('Errore nel caricamento dei dati JSON:', error);
-            });
-    </script> -->
 </x-main>

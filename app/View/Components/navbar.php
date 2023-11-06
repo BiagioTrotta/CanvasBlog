@@ -9,7 +9,7 @@ use Illuminate\View\Component;
 class navbar extends Component
 {
     public $nav;
-
+    public $nav2;
     public function __construct()
     {
         //
@@ -20,8 +20,12 @@ class navbar extends Component
         $this->nav =
             [
                 route('homepage') => 'Home',
-                route('pokedex.pokemon') => 'Pokedex',
             ];
+        $this->nav2 =
+        [
+            route('pokedex.pokemon_php') => 'Pokedex_PHP',
+            route('pokedex.pokemon_js') => 'Pokedex_JS',
+        ];
         return view('components.navbar');
     }
 }
