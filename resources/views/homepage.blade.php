@@ -1,6 +1,13 @@
 <x-main>
     <x-slot:title>{{ $title }}</x-slot:title>
 
+    @if(session('error'))
+    <div class="alert alert-danger mt-3">
+        {{ session('error') }}
+    </div>
+    @endif
+
+
     <div class="container-fluid my-3">
         <div class="row position-relative">
             <div id="carouselExampleCaptions" class="carousel slide">
@@ -41,7 +48,7 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-                <img class="w-25 mx-auto position-absolute z-3 top-50 start-50 translate-middle" src="{{ Storage::url("public/images/media/title_canvas_blog_3.png") }}" alt="{{ config('app.name') }}">
+                <img class="w-25 mx-auto position-absolute z-3 top-50 start-50 translate-middle" src="{{ Storage::url("public/images/media/title_canvas_blog_5.png") }}" alt="{{ config('app.name') }}">
         </div>
 
     </div>

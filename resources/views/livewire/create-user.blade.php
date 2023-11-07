@@ -47,7 +47,7 @@
                 @error('password') <span class="text-danger fw-bold">{{ $message }}</span> @enderror
             </div>
 
-            <button type="submit" class="btn btn-dark">Save</button>
+            <button type="submit" class="btn btn-dark mt-2">Save</button>
         </form>
     </div>
 </div>

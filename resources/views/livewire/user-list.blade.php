@@ -1,5 +1,5 @@
 <div>
-    <h2>List Users</h2>
+    <h2>List Users <i class="fa-solid fa-users"></i></h2>
     @if (session()->has('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -19,7 +19,7 @@
                 <tr>
                     <td><i class="fa-solid fa-user"></i> {{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td class="text-center">
+                    <td>
                         <button class="btn btn-sm btn-dark fa" wire:click="editUser({{$user->id}})"><i class="fa-solid fa-pen-to-square"></i></button>
                         <button class="btn btn-sm btn-danger fa" wire:click="deleteUser({{$user->id}})"><i class="fa-solid fa-trash"></i></button>
                     </td>

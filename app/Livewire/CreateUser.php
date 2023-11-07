@@ -41,8 +41,6 @@ class CreateUser extends Component
         if ($this->user) {
             // Modifica l'utente esistente
             $this->user->update([
-                'is_admin' => $this->is_admin,
-                'is_revisor' => $this->is_revisor,
                 'name' => $this->name,
                 'email' => $this->email, // Non è necessario verificare l'unicità qui
                 'password' => bcrypt($this->password),
@@ -99,23 +97,6 @@ class CreateUser extends Component
         $this->name = $this->user->name;
         $this->email = $this->user->email;
         $this->password = '';
-
-        if($this->user->is_admin != 1 || $this->user->is_admin == null){
-            $this->is_admin = false;
-        }
-        else
-        {
-            $this->is_admin = true;
-        };
-        if ($this->user->is_revisor != 1 || $this->user->is_revisor == null)
-        {
-            $this->is_revisor = false;
-        }
-        else
-        {
-            $this->is_revisor = true;
-        };
-
     }
     public function render()
     {

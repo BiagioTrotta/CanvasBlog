@@ -20,6 +20,7 @@ class navbar extends Component
         $this->nav =
             [
                 route('homepage') => 'Home',
+                route('admin.users') => 'Create User',
             ];
         $this->nav2 =
         [
