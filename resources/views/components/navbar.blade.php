@@ -12,17 +12,33 @@
             </div>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Api
-                </a>
-                <ul class="dropdown-menu">
-                @foreach($nav2 as $key => $navitem)
-                <li><a class="dropdown-item" href="{{$key}}">{{$navitem}}</a></li>
-                    @if (!$loop->last)
-                    <li><hr class="dropdown-divider"></li>
-                    @endif
-                @endforeach
+                     <a class="nav-link dropdown-toggle fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                     Api
+                     </a>
+                    <ul class="dropdown-menu">
+                       @foreach($nav2 as $key => $navitem)
+                        <li><a class="dropdown-item" href="{{$key}}">{{$navitem}}</a></li>
+                         @if (!$loop->last)
+                         <li><hr class="dropdown-divider"></li>
+                         @endif
+                        @endforeach
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                     Admin Panel
+                     </a>
+                    <ul class="dropdown-menu">
+                       @foreach($nav3 as $key => $navitem)
+                        <li><a class="dropdown-item" href="{{$key}}">{{$navitem}}</a></li>
+                         @if (!$loop->last)
+                         <li><hr class="dropdown-divider"></li>
+                         @endif
+                        @endforeach
+                    </ul>
+                </li>
             </ul>
+            
             </ul>
             <div class="navbar-nav ms-auto text-center">
                 @guest

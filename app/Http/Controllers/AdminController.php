@@ -11,4 +11,10 @@ class AdminController extends Controller
         $title = 'Create User';
         return view("admin.users", compact("title"));
     }
+
+    public function categories()
+    {
+        $title = 'Create Category';
+        return view("admin.categories", compact("title"));
+    }
 }

@@ -44,7 +44,7 @@ class UserList extends Component
     {
         /* return view('livewire.list-users'); */
         return view('livewire.user-list', [
-            'utenti' => User::paginate(3),
+            'utenti' => User::paginate(4),
         ]);
     }
    

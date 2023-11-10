@@ -11,6 +11,8 @@
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
+                    <th class="text-center">Admin</th>
+                    <th class="text-center">Revisor</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -19,6 +21,19 @@
                 <tr>
                     <td><i class="fa-solid fa-user"></i> {{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
+                    <td class="text-center">
+                        @if($user->isAdmin)
+                        <i class="fa-solid fa-check text-success"></i>
+                        @else 
+                        <i class="fa-solid fa-x text-secondary"></i>
+                        @endif
+                    </td>
+                    <td class="text-center">
+                        @if($user->isRevisor)
+                        <i class="fa-solid fa-check text-success"></i>
+                        @else 
+                        <i class="fa-solid fa-x text-secondary"></i>
+                        @endif
                     <td>
                         <button class="btn btn-sm btn-dark fa" wire:click="editUser({{$user->id}})"><i class="fa-solid fa-pen-to-square"></i></button>
                         <button class="btn btn-sm btn-danger fa" wire:click="deleteUser({{$user->id}})"><i class="fa-solid fa-trash"></i></button>

@@ -7,15 +7,19 @@ use App\Models\User;
 
 class CreateUser extends Component
 {
+    public $user;
     public $name;
     public $email;
     public $password;
-    public $user;
+    public $isAdmin = false;
+    public $isRevisor = false;
 
     protected $rules = [
         'name' => 'required|min:4',
         'email' => 'required|email',
         'password' => 'required|min:6',
+        'isAdmin' => 'boolean',
+        'isRevisor' => 'boolean',
     ];
 
     protected $messages = [
@@ -44,6 +48,8 @@ class CreateUser extends Component
                 'name' => $this->name,
                 'email' => $this->email, // Non è necessario verificare l'unicità qui
                 'password' => bcrypt($this->password),
+                'isAdmin' => $this->isAdmin,
+                'isRevisor' => $this->isRevisor,
             ]);
 
             // Emetti un messaggio di successo
@@ -61,6 +67,8 @@ class CreateUser extends Component
                     'name' => $this->name,
                     'email' => $this->email,
                     'password' => bcrypt($this->password),
+                    'isAdmin' => $this->isAdmin,
+                    'isRevisor' => $this->isRevisor,
                 ]);
 
                 // Emetti un messaggio di successo
@@ -93,7 +101,7 @@ class CreateUser extends Component
     //Edita utente
     public function edit($user_id)
     {
-        $this->user = \App\Models\User::find($user_id);
+        $this->user = User::find($user_id);
         $this->name = $this->user->name;
         $this->email = $this->user->email;
         $this->password = '';

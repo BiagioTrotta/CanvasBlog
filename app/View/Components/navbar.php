@@ -10,6 +10,8 @@ class navbar extends Component
 {
     public $nav;
     public $nav2;
+    public $nav3;
+
     public function __construct()
     {
         //
@@ -20,12 +22,17 @@ class navbar extends Component
         $this->nav =
             [
                 route('homepage') => 'Home',
-                route('admin.users') => 'Create User',
             ];
         $this->nav2 =
         [
             route('pokedex.pokemon_php') => 'Pokedex_PHP',
             route('pokedex.pokemon_js') => 'Pokedex_JS',
+        ];
+
+        $this->nav3 =
+        [
+            route('admin.users') => 'Create User',
+            route('admin.categories') => 'Create Category',
         ];
         return view('components.navbar');
     }

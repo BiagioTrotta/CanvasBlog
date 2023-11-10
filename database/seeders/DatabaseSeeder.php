@@ -12,11 +12,35 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $this->users();
+    }
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+    private function users()
+    {
+        $user = \App\Models\User::create([
+            'isAdmin' => 1,
+            'isRevisor' => 1,
+            'name' => 'Administrator',
+            'email' => 'admin@example.com',
+            'password' => \Illuminate\Support\Facades\Hash::make('12345678')
+        ]);
+
+        $user = \App\Models\User::create([
+            'isRevisor' => 1,
+            'name' => 'Revisor',
+            'email' => 'revisor@example.com',
+            'password' => \Illuminate\Support\Facades\Hash::make('12345678')
+        ]);
+
+        $user = \App\Models\User::create([
+            'name' => 'User1',
+            'email' => 'user1@example.com',
+            'password' => \Illuminate\Support\Facades\Hash::make('12345678')
+        ]);
+        $user = \App\Models\User::create([
+            'name' => 'User2',
+            'email' => 'user2@example.com',
+            'password' => \Illuminate\Support\Facades\Hash::make('12345678')
+        ]);
     }
 }

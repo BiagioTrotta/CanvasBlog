@@ -25,7 +25,7 @@
         </div>
 
         <div class="col-12">
-            <button class="btn btn-sm btn-dark" wire:click="newUser"><i class="fa-solid fa-plus"></i> NewUser</button>
+            <button class="btn btn-sm btn-dark" wire:click="newUser"><i class="fa-solid fa-plus"></i> New User</button>
         </div>
 
         <form wire:submit.prevent="createUser">
@@ -47,7 +47,26 @@
                 @error('password') <span class="text-danger fw-bold">{{ $message }}</span> @enderror
             </div>
 
-            <button type="submit" class="btn btn-dark mt-2">Save</button>
+            <div class="form-group">
+                <label for="isAdmin">IsAdmin:</label>
+                <div class="form-check">
+                    <input type="checkbox" wire:model="isAdmin" class="form-check-input" id="isAdmin">
+                    <label class="form-check-label" for="isAdmin" value="true">Yes</label>
+                </div>
+              @error('isAdmin') <span class="text-danger fw-bold">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="isRevisor">isRevisor:</label>
+                <div class="form-check">
+                    <input type="checkbox" wire:model="isRevisor" class="form-check-input" id="isRevisor">
+                    <label class="form-check-label" for="isRevisor" value="true">Yes</label>
+                </div>
+              @error('isRevisor') <span class="text-danger fw-bold">{{ $message }}</span> @enderror
+            </div>
+
+
+            <button type="submit" class="btn btn-dark fw-bold">Save</button>
         </form>
     </div>
 </div>
