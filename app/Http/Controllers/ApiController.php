@@ -49,17 +49,15 @@ class ApiController extends Controller
 
     public function peopleApi()
     {
-        
-
         /* Utilizzo Api esterna mediante link */
 
         $endpoint = 'https://fakerapi.it/api/v1/persons?_quantity=8&_gender=male&_birthday_start=2005-01-01';
-        $data = Http::get($endpoint)->json();
+        $people = Http::get($endpoint)->json();
 
         $title = 'People';
 
-        dd($data);
+        dd($people['data']);
 
-        return view('api.people', ['data' => $data['pokemon'], 'title' => $title]);  
+        return view('api.people', ['data' => $people['data'], 'title' => $title]);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\Auth\GoogleController;
 
 Route::get('/', [PageController::class, 'index'])->name('homepage');
 Route::get('/pokedex/php', [ApiController::class, 'pokedexApiPhp'])->name('pokedex.pokemon_php');
@@ -15,5 +15,6 @@ Route::get('/create_article', [AdminController::class, 'articles'])->name('admin
 
 Route::get('/api/people', [ApiController::class, 'peopleApi'])->name('api.people');
 
-Route::get ('auth/google', [GoogleAuthController::class,'redirect'])->name('google-auth');
-Route::get ('auth/google/call-back', [GoogleAuthController::class,'callbackGoogle'])->name('');
+//Sezione socialite
+Route::get('auth/google', [GoogleController::class, 'redirect'])->name('google-auth');
+Route::get('auth/google/call-back', [GoogleController::class, 'callbackGoogle']);

@@ -19,7 +19,14 @@
                     @enderror
                 </div>
                 <div class="col-12 my-3 text-center">
-                    <a href="{{ route('google-auth')}}">Login google</a>
+                    <a href="{{ route('google-auth') }}" class="text-custom-orange fw-bold">
+                        <div class="google-btn">
+                            <div class="google-icon-wrapper">
+                                <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+                            </div>
+                            <p class="btn-text"><b>Sign in with google</b></p>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-12 mt-3 text-center">
                     <button type="submit" class="btn btn-dark fw-bold text-center">Login</button>
