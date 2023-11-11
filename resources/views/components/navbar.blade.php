@@ -10,12 +10,12 @@
                 <a class="nav-link fs-4 @if($loop->first)active @endif" href="{{$key}}">{{$navitem}}</a>
                 @endforeach
             </div>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center text-lg-start">
                 <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                      Api
                      </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu text-center text-lg-start w-25 mx-auto">
                        @foreach($nav2 as $key => $navitem)
                         <li><a class="dropdown-item" href="{{$key}}">{{$navitem}}</a></li>
                          @if (!$loop->last)
@@ -28,7 +28,7 @@
                      <a class="nav-link dropdown-toggle fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                      Admin Panel
                      </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu text-center text-lg-start w-25 mx-auto">
                        @foreach($nav3 as $key => $navitem)
                         <li><a class="dropdown-item" href="{{$key}}">{{$navitem}}</a></li>
                          @if (!$loop->last)

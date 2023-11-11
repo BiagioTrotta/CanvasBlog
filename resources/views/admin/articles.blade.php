@@ -3,10 +3,10 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-lg-5">
-                <livewire:create-category />
+                <livewire:create-article />
             </div>
             <div class="col-lg-7">
-                <livewire:category-list />
+                <livewire:article-list />
             </div>
         </div>
     </div>

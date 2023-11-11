@@ -6,7 +6,7 @@ use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ListCategory extends Component
+class CategoryList extends Component
 {
     public $categories;
 
@@ -43,7 +43,7 @@ class ListCategory extends Component
 
     public function render()
     {
-        return view('livewire.list-category', [
+        return view('livewire.category-list', [
             'categorie' => Category::paginate(5),
         ]);
     }

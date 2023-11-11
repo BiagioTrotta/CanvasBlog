@@ -17,4 +17,10 @@ class AdminController extends Controller
         $title = 'Create Category';
         return view("admin.categories", compact("title"));
     }
+
+    public function articles()
+    {
+        $title = 'Create Article';
+        return view("admin.articles", compact("title"));
+    }
 }

@@ -46,4 +46,20 @@ class ApiController extends Controller
         $title = 'Pokemon_JS';
         return view('pokedex.pokemon_js', compact('title'));
     }
+
+    public function peopleApi()
+    {
+        
+
+        /* Utilizzo Api esterna mediante link */
+
+        $endpoint = 'https://fakerapi.it/api/v1/persons?_quantity=8&_gender=male&_birthday_start=2005-01-01';
+        $data = Http::get($endpoint)->json();
+
+        $title = 'People';
+
+        dd($data);
+
+        return view('api.people', ['data' => $data['pokemon'], 'title' => $title]);  
+    }
 }
