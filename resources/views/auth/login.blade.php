@@ -18,6 +18,9 @@
                     <div class="text-danger fw-bold">{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="col-12 my-3 text-center">
+                    <a href="{{ route('google-auth')}}">Login google</a>
+                </div>
                 <div class="col-12 mt-3 text-center">
                     <button type="submit" class="btn btn-dark fw-bold text-center">Login</button>
                 </div>
