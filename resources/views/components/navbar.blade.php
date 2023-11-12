@@ -24,6 +24,8 @@
                         @endforeach
                     </ul>
                 </li>
+                @auth
+                    @if(auth()->user()->isAdmin)
                 <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                      Admin Panel
@@ -37,6 +39,8 @@
                         @endforeach
                     </ul>
                 </li>
+                    @endif
+                @endauth
             </ul>
             
             </ul>
