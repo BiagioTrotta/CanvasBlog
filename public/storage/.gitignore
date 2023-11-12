@@ -1,3 +1,4 @@
 *
 !.gitignore
 !/storage/app
+!storage/app/public/images/*.png

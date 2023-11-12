@@ -3,3 +3,4 @@
 !public/
 !images/media
 !/storage/app
+!storage/app/public/images/*.png

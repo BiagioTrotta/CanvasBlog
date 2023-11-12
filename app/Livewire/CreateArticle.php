@@ -4,21 +4,24 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Article;
-
+use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class CreateArticle extends Component
 {
+    use WithFileUploads;
+
     public $article;
     public $title;
     public $description;
-    public $image;
+    public $image;  // Aggiunto campo per il caricamento dell'immagine
     public $body;
     public $isAccepted = false;
 
     protected $rules = [
         'title' => 'required|max:50',
         'description' => 'required|max:150',
-        'image' => 'nullable|max:250',
+        'image' => 'nullable|image|max:1024',  // Aggiunto il supporto per il caricamento di immagini (max size 1MB)
         'body' => 'required',
         'isAccepted' => 'boolean',
     ];
@@ -44,7 +47,7 @@ class CreateArticle extends Component
             $this->article->update([
                 'title' => $this->title,
                 'description' => $this->description,
-                'image' => $this->image,
+                'image' => $this->uploadImage($this->article->id),
                 'body' => $this->body,
                 'is_accepted' => $this->isAccepted,
             ]);
@@ -54,7 +57,7 @@ class CreateArticle extends Component
             Article::create([
                 'title' => $this->title,
                 'description' => $this->description,
-                'image' => $this->image,
+                'image' => $this->uploadImage(),
                 'body' => $this->body,
                 'is_accepted' => $this->isAccepted,
             ]);
@@ -66,6 +69,16 @@ class CreateArticle extends Component
         $this->dispatch('loadArticles');
     }
 
+    private function uploadImage($articleId = null)
+    {
+        if ($this->image) {
+            $imageName = $articleId ? "{$articleId}.jpg" : uniqid() . '.jpg';
+            return $this->image->storeAs('public/images/', $imageName);
+        }
+
+        return null;
+    }
+
     public function mount()
     {
         $this->newArticle();
@@ -73,10 +86,10 @@ class CreateArticle extends Component
 
     public function newArticle()
     {
-        $this->article = '';
+        $this->article = null;
         $this->title = '';
         $this->description = '';
-        $this->image = '';
+        $this->image = null;
         $this->body = '';
         $this->isAccepted = false;
     }
@@ -86,7 +99,6 @@ class CreateArticle extends Component
         $this->article = Article::find($article_id);
         $this->title = $this->article->title;
         $this->description = $this->article->description;
-        $this->image = $this->article->image;
         $this->body = $this->article->body;
         $this->isAccepted = $this->article->is_accepted;
     }

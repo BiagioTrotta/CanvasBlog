@@ -42,7 +42,7 @@
 
             <div class="form-group">
                 <label for="image">Image:</label>
-                <input type="text" wire:model="image" class="form-control" id="image">
+                <input type="file" wire:model="image" class="form-control" id="image">
                 @error('image') <span class="text-danger fw-bold">{{ $message }}</span> @enderror
             </div>
 
