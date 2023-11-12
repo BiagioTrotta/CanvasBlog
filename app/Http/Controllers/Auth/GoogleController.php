@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class GoogleController extends Controller
 {
@@ -43,6 +44,7 @@ class GoogleController extends Controller
                 'name' => $google_user->getName(),
                 'email' => $google_user->getEmail(),
                 'google_id' => $google_user->getId(),
+                'password' => bcrypt(Str::random(12)),
             ]);
 
             // Effettua il login con il nuovo utente e reindirizza
