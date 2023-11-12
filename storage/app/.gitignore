@@ -1,4 +1,5 @@
 *
 !.gitignore
 !public/
-!images/
+!images/media
+!/storage/app
