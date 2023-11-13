@@ -72,12 +72,15 @@ class CreateArticle extends Component
     private function uploadImage($articleId = null)
     {
         if ($this->image) {
-            $imageName = $articleId ? "{$articleId}.jpg" : uniqid() . '.jpg';
-            return $this->image->storeAs('public/images/', $imageName);
-        }
+        $articleFolder = $articleId ? "{$articleId}" : uniqid();
+        $imageName = 'img_article.jpg'; // o qualsiasi altro nome che desideri
 
-        return null;
+        return $this->image->storeAs("public/images/{$articleFolder}", $imageName);
     }
+
+    return null;
+    }
+
 
     public function mount()
     {
