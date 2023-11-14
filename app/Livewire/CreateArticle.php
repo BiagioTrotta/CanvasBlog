@@ -55,6 +55,7 @@ class CreateArticle extends Component
             session()->flash('success', 'Articolo modificato con successo.');
         } else {
             Article::create([
+                'user_id' => auth()->id(),
                 'title' => $this->title,
                 'description' => $this->description,
                 'image' => $this->uploadImage(),

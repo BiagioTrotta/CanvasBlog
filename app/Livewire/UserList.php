@@ -30,19 +30,24 @@ class UserList extends Component
     }
 
     public function deleteUser($user_id)
-    {
-        $user = User::find($user_id);
+{
+    $user = User::find($user_id);
+
+    if ($user) {
+        $user->articles()->delete();
         $user->delete();
-        session()->flash('success', 'User successfully delete');
+        session()->flash('success', 'User successfully deleted');
         $this->loadUsers();
+    } else {
+        session()->flash('error', 'User not found');
     }
+}
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
     public function render()
     {
-        /* return view('livewire.list-users'); */
         return view('livewire.user-list', [
             'utenti' => User::paginate(4),
         ]);

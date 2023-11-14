@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('title', 50);
             $table->string('description', 150);
             $table->string('image', 250)->nullable();
