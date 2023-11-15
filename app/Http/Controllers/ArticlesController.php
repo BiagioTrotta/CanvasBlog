@@ -19,4 +19,10 @@ class ArticlesController extends Controller
         $title = $article->title;
         return view('articles.show', compact('article', 'title'));
     }
+
+    public function status()
+    {
+        $title = 'Articles Status';
+        return view('admin.articlesStatus', compact('title'));
+    }
 }

@@ -40,43 +40,47 @@ class CreateArticle extends Component
     ];
 
     public function createArticle()
-    {
-        $this->validate();
+{
+    $this->validate();
 
-        if ($this->article) {
-            $this->article->update([
-                'title' => $this->title,
-                'description' => $this->description,
-                'image' => $this->uploadImage($this->article->id),
-                'body' => $this->body,
-                'is_accepted' => $this->isAccepted,
-            ]);
+    if ($this->article) {
+        $this->article->update([
+            'title' => $this->title,
+            'description' => $this->description,
+            'image' => $this->uploadImage($this->article->id),
+            'body' => $this->body,
+            'is_accepted' => $this->isAccepted,
+        ]);
 
-            session()->flash('success', 'Articolo modificato con successo.');
-        } else {
-            Article::create([
-                'user_id' => auth()->id(),
-                'title' => $this->title,
-                'description' => $this->description,
-                'image' => $this->uploadImage(),
-                'body' => $this->body,
-                'is_accepted' => $this->isAccepted,
-            ]);
+        session()->flash('success', 'Article modified successfully.');
+    } else {
+        $newArticle = Article::create([
+            'user_id' => auth()->id(),
+            'title' => $this->title,
+            'description' => $this->description,
+            'body' => $this->body,
+            'is_accepted' => $this->isAccepted,
+        ]);
 
-            session()->flash('success', 'Articolo creato con successo.');
-        }
+        // Recupera l'id dell'articolo appena creato
+        $articleId = $newArticle->id;
 
-        $this->newArticle();
-        $this->dispatch('loadArticles');
+        $newArticle->update([ 'image' => $this->uploadImage($articleId), ]);
+
+        session()->flash('success', 'Article created successfully.');
     }
+
+    $this->newArticle();
+    $this->dispatch('loadArticles');
+}
 
     private function uploadImage($articleId = null)
     {
         if ($this->image) {
         $articleFolder = $articleId ? "{$articleId}" : uniqid();
-        $imageName = 'img_article.jpg'; // o qualsiasi altro nome che desideri
+        $imageName = 'img_article.jpg'; 
 
-        return $this->image->storeAs("public/images/{$articleFolder}", $imageName);
+        return $this->image->storeAs("public/images/images_articles/{$articleFolder}", $imageName);
     }
 
     return null;

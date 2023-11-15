@@ -12,6 +12,8 @@ Route::get('/', [PageController::class, 'index'])->name('homepage');
 Route::get('/articles', [ArticlesController::class, 'index'])->name('articles.index');
 Route::get('/articles/{article}', [ArticlesController::class, 'show'])->name('articles.show');
 
+
+
 //Route Api
 Route::get('/pokedex/php', [ApiController::class, 'pokedexApiPhp'])->name('pokedex.pokemon_php');
 Route::get('/pokedex/js', [ApiController::class, 'pokedexApiJs'])->name('pokedex.pokemon_js')->middleware('revisor');
