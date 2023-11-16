@@ -2,9 +2,10 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\Article;
+use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleList extends Component
 {
@@ -23,7 +24,7 @@ class ArticleList extends Component
 
     public function loadArticles()
     {
-        $this->articles = Article::all();
+        $this->articles = Article::all(); 
     }
 
     public function editArticle($article_id)
