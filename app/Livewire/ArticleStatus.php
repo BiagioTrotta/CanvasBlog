@@ -14,13 +14,13 @@ class ArticleStatus extends Component
         $this->articles = Article::all();
     }
 
-    public function toggleStatus($articleId)
+    public function toggleStatus($articleId, $status)
     {
         $article = Article::find($articleId);
 
         if ($article) {
             $article->update([
-                'is_accepted' => $article->is_accepted === true ? null : true,
+                'is_accepted' => $status,
             ]);
         }
 

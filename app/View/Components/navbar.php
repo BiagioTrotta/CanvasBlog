@@ -35,6 +35,7 @@ class navbar extends Component
         [
             route('admin.users') => 'Create User',
             route('admin.categories') => 'Create Category',
+            route('admin.status') => 'Status Articles',
         ];
         return view('components.navbar');
     }

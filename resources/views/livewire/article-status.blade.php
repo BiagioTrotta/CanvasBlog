@@ -1,9 +1,10 @@
 <div>
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Title</th>
                 <th>Description</th>
+                <th>Authors</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -13,10 +14,30 @@
                 <tr>
                     <td>{{ $article->title }}</td>
                     <td>{{ $article->description }}</td>
-                    <td>{{ $article->is_accepted ? 'Accepted' : 'Not Accepted' }}</td>
+                    <td>{{ $article->user->name }}</td>
+                    <td style="width: 10rem;">
+                    @if($article->is_accepted)
+                       <div class="text-success fw-bold">Accepted</div>
+                    @elseif($article->is_accepted === null)
+                       <div class="text-warning fw-bold">Under Review</div>
+                    @else
+                       <div class="text-danger fw-bold">Not Accepted</div>
+                    @endif
+                    </td>
                     <td>
-                        <button wire:click="toggleStatus({{ $article->id }})">
-                            Toggle Status
+                        <!-- Bottone per Accettare l'articolo -->
+                        <button class="bg bg-success text-light" wire:click="toggleStatus({{ $article->id }}, true)">
+                            Accept
+                        </button>
+
+                        <!-- Bottone per Revisionare l'articolo -->
+                        <button class="bg bg-warning text-light" wire:click="toggleStatus({{ $article->id }}, null)">
+                            Revision
+                        </button>
+                        
+                        <!-- Bottone per Rifiutare l'articolo -->
+                        <button class="bg bg-danger text-light" wire:click="toggleStatus({{ $article->id }}, false)">
+                            Reject
                         </button>
                     </td>
                 </tr>

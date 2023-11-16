@@ -11,4 +11,5 @@ class PageController extends Controller
         $title = 'Homepage';
         return view('homepage', compact('title'));
     }
+
 }

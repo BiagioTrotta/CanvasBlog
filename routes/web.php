@@ -11,7 +11,7 @@ Route::get('/', [PageController::class, 'index'])->name('homepage');
 
 Route::get('/articles', [ArticlesController::class, 'index'])->name('articles.index');
 Route::get('/articles/{article}', [ArticlesController::class, 'show'])->name('articles.show');
-
+Route::get('/articles_status', [ArticlesController::class, 'status'])->name('admin.status');
 
 
 //Route Api
@@ -28,3 +28,5 @@ Route::get('/create_article', [AdminController::class, 'articles'])->name('admin
 //Sezione socialite
 Route::get('auth/google', [GoogleController::class, 'redirect'])->name('google-auth');
 Route::get('auth/google/call-back', [GoogleController::class, 'callbackGoogle']);
+
+
