@@ -10,7 +10,7 @@ class ArticlesController extends Controller
     public function index()
     {
         $title = 'Articles';
-        $articles = Article::all();
+        $articles = Article::where('is_accepted', true)->get();
         return view('articles.index', compact('articles','title'));
     }
 

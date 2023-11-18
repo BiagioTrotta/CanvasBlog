@@ -12,6 +12,7 @@
             <thead>
                 <tr>
                     <th>Title</th>
+                    <th>Category</th>
                     <th>Created At</th>
                     <th>Action</th>
                 </tr>
@@ -20,6 +21,7 @@
                 @foreach ($articoli as $article)
                     <tr>
                         <td><i class="fa-solid fa-file"></i> {{ $article->title }}</td>
+                        <td>{{ $article->category->name }}</td>
                         <td>{{ $article->created_at->diffForHumans() }}</td>
                         <td>
                             <button class="btn btn-sm btn-dark fa" wire:click="editArticle({{ $article->id }})"><i class="fa-solid fa-pen-to-square"></i></button>

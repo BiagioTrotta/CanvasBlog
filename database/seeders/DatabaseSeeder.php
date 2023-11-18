@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->users();
+        $this->categories();
     }
 
     private function users()
@@ -43,4 +44,28 @@ class DatabaseSeeder extends Seeder
             'password' => \Illuminate\Support\Facades\Hash::make('12345678')
         ]);
     }
+
+    public function categories()
+    {
+        $category1 = \App\Models\Category::create([
+            'name' => 'Home',
+        ]);
+    
+        $category2 = \App\Models\Category::create([
+            'name' => 'Sport',
+        ]);
+    
+        $category3 = \App\Models\Category::create([
+            'name' => 'Finance',
+        ]);
+    
+        $category4 = \App\Models\Category::create([
+            'name' => 'Technology',
+        ]);
+    
+        $category5 = \App\Models\Category::create([
+            'name' => 'Travel',
+        ]);
+    }
+    
 }

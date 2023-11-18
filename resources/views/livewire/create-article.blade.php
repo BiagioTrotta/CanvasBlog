@@ -35,6 +35,17 @@
             </div>
 
             <div class="form-group">
+                <label for="category">Category:</label>
+                <select wire:model="category_id" class="form-control" id="category">
+                    <option value="">Select a category</option>
+                    @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                    @error('category_id') <span class="text-danger fw-bold">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="form-group">
                 <label for="description">Description:</label>
                 <input type="text" wire:model="description" class="form-control" id="description">
                 @error('description') <span class="text-danger fw-bold">{{ $message }}</span> @enderror

@@ -3,14 +3,17 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Article;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class navbar extends Component
 {
     public $nav;
     public $nav2;
     public $nav3;
+
+    public $countRevisior;
 
     public function __construct()
     {
@@ -37,6 +40,7 @@ class navbar extends Component
             route('admin.categories') => 'Create Category',
             route('admin.status') => 'Status Articles',
         ];
+
         return view('components.navbar');
     }
 }

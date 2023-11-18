@@ -2,10 +2,11 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\Article;
-use Livewire\WithFileUploads;
+use Livewire\Component;
+use App\Models\Category;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 
 class CreateArticle extends Component
 {
@@ -13,6 +14,8 @@ class CreateArticle extends Component
 
     public $article;
     public $title;
+
+    public $category_id;
     public $description;
     public $image;  // Aggiunto campo per il caricamento dell'immagine
     public $body;
@@ -46,6 +49,7 @@ class CreateArticle extends Component
     if ($this->article) {
         $this->article->update([
             'title' => $this->title,
+            'category_id' => $this->category_id,
             'description' => $this->description,
             'image' => $this->uploadImage($this->article->id),
             'body' => $this->body,
@@ -57,6 +61,7 @@ class CreateArticle extends Component
         $newArticle = Article::create([
             'user_id' => auth()->id(),
             'title' => $this->title,
+            'category_id' => $this->category_id,
             'description' => $this->description,
             'body' => $this->body,
             'is_accepted' => $this->isAccepted,
@@ -96,6 +101,7 @@ class CreateArticle extends Component
     {
         $this->article = null;
         $this->title = '';
+        $this->category_id = null;
         $this->description = '';
         $this->image = null;
         $this->body = '';
@@ -106,6 +112,7 @@ class CreateArticle extends Component
     {
         $this->article = Article::find($article_id);
         $this->title = $this->article->title;
+        $this->category_id = $this->article->category_id;
         $this->description = $this->article->description;
         $this->body = $this->article->body;
         $this->isAccepted = $this->article->is_accepted;
@@ -113,6 +120,10 @@ class CreateArticle extends Component
 
     public function render()
     {
-        return view('livewire.create-article');
+        $categories = Category::all(); // Ottieni tutte le categorie
+
+        return view('livewire.create-article', [
+            'categories' => $categories,
+        ]);
     }
 }
