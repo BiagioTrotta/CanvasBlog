@@ -20,8 +20,8 @@
             <tbody class="table-group-divider">
                 @foreach ($articoli as $article)
                     <tr>
-                        <td><i class="fa-solid fa-file"></i> {{ $article->title }}</td>
-                        <td>{{ $article->category->name }}</td>
+                        <td><i class="fa-solid fa-file"></i> <a href="{{route('articles.show', $article)}}">{{ $article->title }}</a></td>
+                        <td>{{$article->category_id ? $article->category->name : 'Not Category'}}</td>
                         <td>{{ $article->created_at->diffForHumans() }}</td>
                         <td>
                             <button class="btn btn-sm btn-dark fa" wire:click="editArticle({{ $article->id }})"><i class="fa-solid fa-pen-to-square"></i></button>

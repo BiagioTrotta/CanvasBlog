@@ -22,7 +22,8 @@ class CreateArticle extends Component
     public $isAccepted = false;
 
     protected $rules = [
-        'title' => 'required|max:50',
+        'title' => 'required|min:4|max:50',
+        'category_id'=>['nullable'],
         'description' => 'required|max:150',
         'image' => 'nullable|image|max:1024',  // Aggiunto il supporto per il caricamento di immagini (max size 1MB)
         'body' => 'required',

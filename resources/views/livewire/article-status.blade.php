@@ -12,7 +12,7 @@
         <tbody>
             @foreach($articles as $article)
                 <tr>
-                    <td>{{ $article->title }}</td>
+                    <td><a href="{{route('articles.show', $article)}}">{{ $article->title }}</a></td>
                     <td>{{ $article->description }}</td>
                     <td>{{ $article->user->name }}</td>
                     <td style="width: 10rem;">

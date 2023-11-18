@@ -12,7 +12,16 @@
                 <img src="{{ Storage::url($article->image) }}" class="card-img-top" alt="{{ $article->title }}">
                 @endif
                 <p>{{ $article->body }}</p>
-                <p><strong>Accepted:</strong> {{ $article->is_accepted ? 'Yes' : 'No' }}</p>
+                <p>
+                    <strong>Accepted:</strong> 
+                    @if($article->is_accepted)
+                       <div class="text-success fw-bold"><i class="fa-solid fa-check"></i></div>
+                    @elseif($article->is_accepted === null)
+                       <div class="text-warning fw-bold"><i class="fa-solid fa-spinner"></i></div>
+                    @else
+                       <div class="text-danger fw-bold"><i class="fa-solid fa-xmark"></i></div>
+                    @endif
+                </p>
                 <a href="{{ route('articles.index') }}" class="btn btn-primary">Back to Articles</a>
             </div>
         </div>
