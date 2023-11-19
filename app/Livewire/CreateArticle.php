@@ -25,13 +25,13 @@ class CreateArticle extends Component
         'title' => 'required|min:4|max:50',
         'category_id'=>['nullable'],
         'description' => 'required|max:150',
-        'image' => 'nullable|image|max:2048',  // Aggiunto il supporto per il caricamento di immagini (max size 2MB)
+        'image' => 'nullable|image|mimes:jpeg,png|max:2048',  // Aggiunto il supporto per il caricamento di immagini (max size 2MB)
         'body' => 'required',
         'isAccepted' => 'boolean',
     ];
 
     protected $messages = [
-        // Aggiungi eventuali messaggi personalizzati per la validazione
+        //
     ];
 
     public function updated($propertyName)
@@ -82,14 +82,15 @@ class CreateArticle extends Component
 
     private function uploadImage($articleId = null)
     {
-        if ($this->image) {
+        if ($this->image) 
+        {
         $articleFolder = $articleId ? "{$articleId}" : uniqid();
         $imageName = 'img_article.jpg'; 
 
         return $this->image->storeAs("public/images/images_articles/{$articleFolder}", $imageName);
-    }
+        }
 
-    return null;
+        return null;
     }
 
 
