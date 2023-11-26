@@ -19,7 +19,7 @@ class CreateArticle extends Component
     public $description;
     public $image;  // Aggiunto campo per il caricamento dell'immagine
     public $body;
-    public $isAccepted = false;
+
 
     protected $rules = [
         'title' => 'required|min:4|max:50',
@@ -27,7 +27,6 @@ class CreateArticle extends Component
         'description' => 'required|max:150',
         'image' => 'nullable|image|mimes:jpeg,png|max:2048',  // Aggiunto il supporto per il caricamento di immagini (max size 2MB)
         'body' => 'required',
-        'isAccepted' => 'boolean',
     ];
 
     protected $messages = [
@@ -54,7 +53,7 @@ class CreateArticle extends Component
             'description' => $this->description,
             'image' => $this->uploadImage($this->article->id),
             'body' => $this->body,
-            'is_accepted' => $this->isAccepted,
+            'is_accepted' => null,
         ]);
 
         session()->flash('success', 'Article modified successfully.');
@@ -65,7 +64,7 @@ class CreateArticle extends Component
             'category_id' => $this->category_id,
             'description' => $this->description,
             'body' => $this->body,
-            'is_accepted' => $this->isAccepted,
+            'is_accepted' => null,
         ]);
 
         // Recupera l'id dell'articolo appena creato
@@ -107,7 +106,6 @@ class CreateArticle extends Component
         $this->description = '';
         $this->image = null;
         $this->body = '';
-        $this->isAccepted = false;
     }
 
     public function editArticle($article_id)
@@ -117,7 +115,6 @@ class CreateArticle extends Component
         $this->category_id = $this->article->category_id;
         $this->description = $this->article->description;
         $this->body = $this->article->body;
-        $this->isAccepted = $this->article->is_accepted;
     }
 
     public function render()
