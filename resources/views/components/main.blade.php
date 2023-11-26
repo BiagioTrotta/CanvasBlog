@@ -31,7 +31,6 @@
 
 
     <script src="https://kit.fontawesome.com/747222a0ae.js" crossorigin="anonymous"></script>
-    <script src="../jquery-3.7.1.min.js"></script>
     @livewireScripts
 </body>
 
