@@ -15,10 +15,14 @@ class ArticlesController extends Controller
     }
 
     public function show(Article $article)
-    {
+{
+    if(auth()->user()->isAdmin || auth()->id() == $article->user_id || $article->is_accepted) {
         $title = $article->title;
         return view('articles.show', compact('article', 'title'));
+    } else {
+        return abort(403, 'Unauthorized');
     }
+}
 
     public function status()
     {
